@@ -6,6 +6,7 @@ import Loader from "@/components/chrome/Loader";
 import Nav from "@/components/chrome/Nav";
 import Menu from "@/components/chrome/Menu";
 import ScrollProgress from "@/components/chrome/ScrollProgress";
+import Cursor from "@/components/chrome/Cursor";
 
 const display = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -58,6 +59,7 @@ export default function RootLayout({
     <html lang="en" className={`${display.variable} ${sans.variable}`}>
       <body className="font-sans antialiased grain">
         <Loader />
+        <Cursor />
         <Nav />
         <Menu />
         <ScrollProgress />

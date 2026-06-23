@@ -9,6 +9,7 @@ import SplitReveal from "@/components/motion/SplitReveal";
 import MagneticButton from "@/components/motion/MagneticButton";
 import Squad from "@/components/sections/Squad";
 import Journey from "@/components/sections/Journey";
+import CameraDirector from "@/components/CameraDirector";
 
 const Experience = dynamic(() => import("@/components/three/Experience"), {
   ssr: false,
@@ -45,9 +46,11 @@ export default function Home() {
     <main className="relative">
       {/* persistent WebGL layer */}
       <Experience />
+      <CameraDirector />
 
       {/* ACT 0 — HERO */}
       <section
+        id="act-hero"
         ref={hero}
         className="relative z-10 flex h-screen flex-col items-center justify-center px-6 text-center"
       >
@@ -72,9 +75,12 @@ export default function Home() {
         </span>
       </section>
 
-      {/* ACT I — ROOTS */}
-      <section className="relative z-10 flex min-h-screen items-center px-6 md:px-20">
-        <div className="max-w-3xl">
+      {/* ACT I — ROOTS (the flag unfurls to the right) */}
+      <section
+        id="act-roots"
+        className="relative z-10 flex min-h-screen items-center px-6 md:px-20"
+      >
+        <div className="max-w-2xl">
           <span className="font-display text-xs tracking-[0.4em] text-maghrib-red">
             {acts.land.kicker}
           </span>
@@ -83,9 +89,36 @@ export default function Home() {
             text={acts.land.title}
             className="display mt-6 text-5xl text-maghrib-bone md:text-7xl"
           />
-          <p className="mt-8 max-w-xl text-base leading-relaxed text-maghrib-sand/70 md:text-lg">
+          <p className="mt-8 max-w-lg text-base leading-relaxed text-maghrib-sand/70 md:text-lg">
             {acts.land.body}
           </p>
+        </div>
+      </section>
+
+      {/* ACT I — THE CREST (drag-to-rotate medallion) */}
+      <section
+        id="act-crest"
+        className="relative z-10 flex min-h-screen items-center justify-end px-6 text-right md:px-20"
+      >
+        <div className="max-w-md">
+          <span className="font-display text-xs tracking-[0.4em] text-maghrib-ember">
+            THE CREST
+          </span>
+          <SplitReveal
+            as="h2"
+            text="Forged in gold."
+            className="display mt-6 text-5xl text-maghrib-bone md:text-7xl"
+          />
+          <p className="mt-8 text-base leading-relaxed text-maghrib-sand/70 md:text-lg">
+            The Seal of Solomon, struck into the federation crest since 1955.
+            Take it in your hands.
+          </p>
+          <span
+            data-hover
+            className="mt-8 inline-flex items-center gap-3 text-[11px] tracking-[0.3em] text-maghrib-sand/50"
+          >
+            <span className="h-px w-10 bg-maghrib-sand/40" /> DRAG TO ROTATE
+          </span>
         </div>
       </section>
 
@@ -96,7 +129,10 @@ export default function Home() {
       <Journey />
 
       {/* ACT IV — THE ROAR */}
-      <section className="relative z-10 flex min-h-screen items-center justify-center px-6 text-center">
+      <section
+        id="act-roar"
+        className="relative z-10 flex min-h-screen items-center justify-center px-6 text-center"
+      >
         <div className="max-w-4xl">
           <span className="font-display text-xs tracking-[0.4em] text-maghrib-red">
             {acts.roar.kicker}
@@ -113,7 +149,10 @@ export default function Home() {
       </section>
 
       {/* ACT V — THE FUTURE + CTA */}
-      <section className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 text-center">
+      <section
+        id="act-future"
+        className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 text-center"
+      >
         <span className="font-display text-xs tracking-[0.4em] text-maghrib-ember">
           {acts.future.kicker}
         </span>

@@ -4,40 +4,13 @@ import { useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { useApp } from "@/lib/store";
+import { makeStarGeometry } from "@/lib/geometry";
 
 /**
- * The five-pointed Moroccan star, extruded and beveled into a faceted
- * jewel. It rotates continuously and reacts to scroll + pointer, shifting
- * its emissive colour from green (roots) toward red (the roar).
+ * The hero five-pointed star, a faceted metallic jewel. It rotates
+ * continuously and reacts to scroll + pointer, shifting its emissive
+ * colour from green (roots) toward red (the roar).
  */
-function makeStarGeometry() {
-  const shape = new THREE.Shape();
-  const spikes = 5;
-  const outer = 1;
-  const inner = 0.42;
-  for (let i = 0; i < spikes * 2; i++) {
-    const r = i % 2 === 0 ? outer : inner;
-    const a = (i / (spikes * 2)) * Math.PI * 2 - Math.PI / 2;
-    const x = Math.cos(a) * r;
-    const y = Math.sin(a) * r;
-    if (i === 0) shape.moveTo(x, y);
-    else shape.lineTo(x, y);
-  }
-  shape.closePath();
-
-  const geo = new THREE.ExtrudeGeometry(shape, {
-    depth: 0.34,
-    bevelEnabled: true,
-    bevelThickness: 0.12,
-    bevelSize: 0.1,
-    bevelSegments: 6,
-    curveSegments: 24,
-  });
-  geo.center();
-  geo.computeVertexNormals();
-  return geo;
-}
-
 export default function StarCore() {
   const group = useRef<THREE.Group>(null);
   const mat = useRef<THREE.MeshStandardMaterial>(null);

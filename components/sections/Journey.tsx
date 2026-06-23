@@ -53,8 +53,9 @@ export default function Journey() {
 
   return (
     <section
+      id="act-journey"
       ref={root}
-      className="relative z-10 bg-maghrib-black px-6 py-32 md:px-10 md:py-48"
+      className="relative z-10 bg-maghrib-black/85 px-6 py-32 backdrop-blur-md md:px-10 md:py-48"
       aria-label="The 2022 World Cup run"
     >
       <div className="mx-auto max-w-5xl">

@@ -41,6 +41,7 @@ export default function Squad() {
 
   return (
     <section
+      id="act-squad"
       ref={section}
       className="relative z-10 overflow-hidden bg-maghrib-black"
       aria-label="The squad"

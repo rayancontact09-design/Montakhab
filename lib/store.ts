@@ -20,6 +20,10 @@ interface AppState {
   // 0..1 overall scroll progress, driven by Lenis
   progress: number;
   setProgress: (p: number) => void;
+
+  // current act label (e.g. "II · THE RISE"), driven by CameraDirector
+  act: string;
+  setAct: (a: string) => void;
 }
 
 export const useApp = create<AppState>((set) => ({
@@ -37,4 +41,7 @@ export const useApp = create<AppState>((set) => ({
 
   progress: 0,
   setProgress: (p) => set({ progress: p }),
+
+  act: "",
+  setAct: (a) => set({ act: a }),
 }));
